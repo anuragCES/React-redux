@@ -1,5 +1,6 @@
 import * as ActionTypes from './actionTypes';
 import courseApi from './../api/mockCourseApi';
+import {ajaxCallBegin, ajaxCallError} from './ajaxCallActions';
 
 export function updateCourseSuccess(course){
     "use strict";
@@ -16,10 +17,12 @@ export function saveCourse(course){
     "use strict";
     // Course will be return with the key as course as it is ES6 - Short Hand Property Name
     return function(dispatch){
+        dispatch(ajaxCallBegin());
         return courseApi.saveCourse(course).then( course => {
             course.id? dispatch(updateCourseSuccess(course))
             : dispatch(createCourseSuccess(course));
         }).catch(error => {
+            dispatch(ajaxCallError());
             throw(error);
         });
     }
@@ -34,6 +37,7 @@ export function loadCoursesSuccess(courses){
 export function loadCourses(){
     "use strict";
     return function(dispatch){
+        dispatch(ajaxCallBegin());
         return courseApi.getAllCourses().then( courses => {
             dispatch(loadCoursesSuccess(courses));
         }).catch(error => {

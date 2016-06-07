@@ -1,5 +1,5 @@
 import * as ActionTypes from './../actions/actionTypes';
-import InitialState from './initialState'
+import InitialState from './initialState';
 
 export default function authorReducer(state = InitialState.authors, action = []){
     "use strict";

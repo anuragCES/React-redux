@@ -13,6 +13,7 @@ import {loadCourses} from './actions/courseAction';
 import {loadAuthors} from './actions/authorAction';
 import './css/index.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/toastr/build/toastr.min.css';
 
 // We dont need to initialze store because we are providing default value to each reducer
 // check out the courseReducer for more reference
