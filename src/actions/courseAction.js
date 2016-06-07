@@ -4,12 +4,12 @@ import {ajaxCallBegin, ajaxCallError} from './ajaxCallActions';
 
 export function updateCourseSuccess(course){
     "use strict";
-    return {type: ActionTypes.UPDATE_COURSE_SUCCESS, course}
+    return {type: ActionTypes.UPDATE_COURSE_SUCCESS, course};
 }
 
 export function createCourseSuccess(course){
     "use strict";
-    return {type: ActionTypes.CREATE_COURSE_SUCCESS, course}
+    return {type: ActionTypes.CREATE_COURSE_SUCCESS, course};
 }
 
 // First action creator
@@ -25,7 +25,7 @@ export function saveCourse(course){
             dispatch(ajaxCallError());
             throw(error);
         });
-    }
+    };
 }
 
 export function loadCoursesSuccess(courses){
@@ -43,5 +43,5 @@ export function loadCourses(){
         }).catch(error => {
             throw(error);
         });
-    }
+    };
 }
