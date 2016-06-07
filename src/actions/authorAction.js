@@ -1,5 +1,6 @@
 import * as ActionTypes from './actionTypes';
 import authorApi from './../api/mockAuthorApi';
+import {ajaxCallBegin} from './ajaxCallActions';
 
 export function loadAuthorSuccess(authors){
     "use strict";
@@ -10,6 +11,7 @@ export function loadAuthorSuccess(authors){
 export function loadAuthors(){
     "use strict";
     return function(dispatch){
+        dispatch(ajaxCallBegin());
         return authorApi.getAllAuthors().then( authors => {
             dispatch(loadAuthorSuccess(authors));
         }).catch(error => {
