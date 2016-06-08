@@ -9,7 +9,7 @@ describe('Manage Meeting Minutes', () => {
   const props = {
     authors: [],
     actions: {saveCourse: () => { return Promise.resolve(); }},
-    courses: {id: '', watchHref: '', title: 'Test', authorId: '', length: '', category: ''}
+    course: {id: '', watchHref: '', title: '', authorId: '', length: '', category: ''}
   };
 
   it('Title shoud be more than 1', ()=>{
@@ -18,7 +18,7 @@ describe('Manage Meeting Minutes', () => {
 
     expect(submitButton.prop('type')).toBe('submit');
     submitButton.simulate('click');
-    expect(wrapper.state().errors.title).toBe('Title must at least 5 characters long');
+    expect(wrapper.state().errors.title).toBe('Title must be at least 5 characters.');
   });
 
 });
