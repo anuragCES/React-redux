@@ -9,18 +9,22 @@ import {Router, browserHistory} from 'react-router';
 import Routes from './Routes.js';
 import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
-import {loadCourses} from './actions/courseAction';
+import {loadCoursesSuccess} from './actions/courseAction';
 import {loadAuthors} from './actions/authorAction';
 import './css/index.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/toastr/build/toastr.min.css';
+import {incrementAsync} from './sagas/actionSagas';
+import * as ActionTypes from './actions/actionTypes';
 
 // We dont need to initialze store because we are providing default value to each reducer
 // check out the courseReducer for more reference
 const store = configureStore();
 
-store.dispatch(loadCourses());
-store.dispatch(loadAuthors());
+const action = type => store.dispatch({type})
+console.log("init");
+store.dispatch(action(ActionTypes.LOAD_COURSES_SUCCESS));
+//store.dispatch(loadAuthors());
 
 render(
     <Provider store={store}>

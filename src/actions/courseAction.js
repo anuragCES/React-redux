@@ -30,7 +30,8 @@ export function saveCourse(course){
 
 export function loadCoursesSuccess(courses){
     "use strict";
-    return {type: ActionTypes.LOAD_COURSES_SUCCESS, courses};
+    console.log("56");
+    return {type: ActionTypes.LOAD_COURSES, courses};
 }
 
 // Thunk API call

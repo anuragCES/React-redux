@@ -3,7 +3,6 @@ import InitialState from './initialState';
 
 export default function courseReducer(state = InitialState.courses, action = []){
     "use strict";
-
     switch (action.type){
         case ActionTypes.CREATE_COURSE_SUCCESS: {
             // Violating immutability of redux
@@ -20,9 +19,15 @@ export default function courseReducer(state = InitialState.courses, action = [])
                 Object.assign({}, action.course)];
         }
 
-        case ActionTypes.LOAD_COURSES_SUCCESS: {
-            return action.courses;
+        case ActionTypes.LOAD_COURSES: {
+          console.log("4");
+          return action.courses;
         }
+        // case ActionTypes.LOAD_COURSES_SUCCESS: {
+        //     console.log("3");
+        //     console.log(action.courses);
+        //     return action.courses;
+        // }
 
         default :
             return state;
