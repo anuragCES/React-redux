@@ -5,7 +5,6 @@ import * as ActionTypes from './../actions/actionTypes';
 
 export function* loadAuthors() {
   const authors = yield call(authorApi.getAllAuthors);
-  console.log(authors);
   yield put({type: ActionTypes.LOAD_AUTHORS, authors});
 }
 

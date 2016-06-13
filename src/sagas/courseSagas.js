@@ -2,6 +2,7 @@ import { takeEvery, delay } from 'redux-saga';
 import { put, call , take} from 'redux-saga/effects';
 import courseApi from './../api/mockCourseApi';
 import * as ActionTypes from './../actions/actionTypes';
+import {browserHistory} from 'react-router';
 
 // Our worker Saga: will perform the async task
 export function* loadCourses() {
@@ -14,11 +15,18 @@ export function* watchLoadCourses() {
   yield* takeEvery(ActionTypes.LOAD_COURSES_SUCCESS, loadCourses);
 }
 
-export function* addCourse(course){
-  const data = yield call(courseApi.saveCourse, course);
-  console.log(data);
+function* fetchUser(action) {
+   try {
+      const course = yield call(courseApi.saveCourse, action.course);     
+      action.course.id? 
+      yield put({type: ActionTypes.UPDATE_COURSE_SUCCESS, course}):
+      yield put({type: ActionTypes.CREATE_COURSE_SUCCESS, course});
+      browserHistory.push('/courses');
+   } catch (e) { 
+      //yield put({type: "USER_FETCH_FAILED", message: e.message});
+   }
 }
 
-export function* createCourse(course) {
-  yield take(ActionTypes.CREATE_COURSE, addCourse(course));
+export function* mySaga() {
+  yield* takeEvery(ActionTypes.CREATE_COURSE, fetchUser);
 }

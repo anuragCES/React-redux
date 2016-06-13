@@ -11,6 +11,7 @@ export default function courseReducer(state = InitialState.courses, action = [])
 
             // Spread operator helps object assign method to create new object instance of the state
             // this is to consider immutability of the state in redux.
+            console.log(action.course);
             return [...state, Object.assign({}, action.course)];
         }
 
