@@ -14,7 +14,6 @@ import {loadAuthors} from './actions/authorAction';
 import './css/index.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/toastr/build/toastr.min.css';
-import {incrementAsync} from './sagas/actionSagas';
 import * as ActionTypes from './actions/actionTypes';
 
 // We dont need to initialze store because we are providing default value to each reducer
@@ -24,7 +23,7 @@ const store = configureStore();
 const action = type => store.dispatch({type})
 console.log("init");
 store.dispatch(action(ActionTypes.LOAD_COURSES_SUCCESS));
-//store.dispatch(loadAuthors());
+store.dispatch(action(ActionTypes.LOAD_AUTHOR_SUCCESS));
 
 render(
     <Provider store={store}>

@@ -20,14 +20,8 @@ export default function courseReducer(state = InitialState.courses, action = [])
         }
 
         case ActionTypes.LOAD_COURSES: {
-          console.log("4");
           return action.courses;
         }
-        // case ActionTypes.LOAD_COURSES_SUCCESS: {
-        //     console.log("3");
-        //     console.log(action.courses);
-        //     return action.courses;
-        // }
 
         default :
             return state;

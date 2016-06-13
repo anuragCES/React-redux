@@ -15,22 +15,23 @@ export function createCourseSuccess(course){
 // First action creator
 export function saveCourse(course){
     "use strict";
-    // Course will be return with the key as course as it is ES6 - Short Hand Property Name
-    return function(dispatch){
-        dispatch(ajaxCallBegin());
-        return courseApi.saveCourse(course).then( course => {
-            course.id? dispatch(updateCourseSuccess(course))
-            : dispatch(createCourseSuccess(course));
-        }).catch(error => {
-            dispatch(ajaxCallError());
-            throw(error);
-        });
-    };
+    // // Course will be return with the key as course as it is ES6 - Short Hand Property Name
+    // return function(dispatch){
+    //     dispatch(ajaxCallBegin());
+    //     return courseApi.saveCourse(course).then( course => {
+    //         course.id? dispatch(updateCourseSuccess(course))
+    //         : dispatch(createCourseSuccess(course));
+    //     }).catch(error => {
+    //         dispatch(ajaxCallError());
+    //         throw(error);
+    //     });
+    // };
+    console.log("1");
+    return {type: ActionTypes.CREATE_COURSE, course};
 }
 
 export function loadCoursesSuccess(courses){
     "use strict";
-    console.log("56");
     return {type: ActionTypes.LOAD_COURSES, courses};
 }
 

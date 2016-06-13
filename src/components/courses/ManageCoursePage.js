@@ -49,18 +49,23 @@ export class ManageCoursePage extends React.Component {
 
 
     saveCourse(event) {
-        event.preventDefault();
+        console.log("1231231231");
+        //event.preventDefault();
 
         if(!this.courseFormIsValid()){
           return;
         }
 
         this.setState({saving: true});
-        this.props.actions.saveCourse(this.state.course).then(() => this.redirect())
-        .catch(error => {
-            toastr.error(error);
-            this.setState({saving: false});
-        });
+        console.log("saveCourse");
+        const temp = this.props.actions.saveCourse(this.state.course);
+        console.log(temp);
+        //this.props.actions.saveCourse(this.state.course)
+        // .then(() => this.redirect())
+        // .catch(error => {
+        //     toastr.error(error);
+        //     this.setState({saving: false});
+        // });
     }
 
     redirect() {
