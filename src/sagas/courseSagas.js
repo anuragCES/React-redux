@@ -15,7 +15,7 @@ export function* watchLoadCourses() {
   yield* takeEvery(ActionTypes.LOAD_COURSES_SUCCESS, loadCourses);
 }
 
-function* fetchUser(action) {
+export function* createCourse(action) {
    try {
       const course = yield call(courseApi.saveCourse, action.course);     
       action.course.id? 
@@ -27,6 +27,6 @@ function* fetchUser(action) {
    }
 }
 
-export function* mySaga() {
-  yield* takeEvery(ActionTypes.CREATE_COURSE, fetchUser);
+export function* watchCreateCourse() {
+  yield* takeEvery(ActionTypes.CREATE_COURSE, createCourse);
 }
