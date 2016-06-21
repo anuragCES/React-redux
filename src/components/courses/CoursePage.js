@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as courseAction from './../../actions/courseAction';
 import CourseList from './CourseList';
+import toastr from 'toastr';
 
 class CoursePage extends React.Component {
 
@@ -16,10 +17,21 @@ class CoursePage extends React.Component {
         };
 
         this.loadCreateCoursePage = this.loadCreateCoursePage.bind(this);
+        this.deleteProject = this.deleteProject.bind(this);
     }
 
     loadCreateCoursePage(event){
         browserHistory.push('/course');
+    }
+
+    deleteProject(event){
+        event.preventDefault();
+        const courseId = event.target.name;
+        this.props.actions.deleteCourse(courseId).then(() => {
+            toastr.success('Minutes deleted');
+        }).catch(error => {
+            toastr.error(error);
+        });
     }
 
     render() {
@@ -28,7 +40,7 @@ class CoursePage extends React.Component {
                 <h1>Meeting Minutes</h1>
                 <input type="button" className="btn btn-primary"
                     onClick={this.loadCreateCoursePage} value="Add MOM"/>
-                <CourseList courses={this.props.courses}/>
+                <CourseList courses={this.props.courses} deleteProject={this.deleteProject}/>
             </div>
         );
     }

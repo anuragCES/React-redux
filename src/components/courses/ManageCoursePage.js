@@ -51,9 +51,9 @@ export class ManageCoursePage extends React.Component {
     saveCourse(event) {
         event.preventDefault();
 
-        if(!this.courseFormIsValid()){
-          return;
-        }
+        // if(!this.courseFormIsValid()){
+        //   return;
+        // }
 
         this.setState({saving: true});
         this.props.actions.saveCourse(this.state.course).then(() => this.redirect())

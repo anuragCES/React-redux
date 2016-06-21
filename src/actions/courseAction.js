@@ -45,3 +45,27 @@ export function loadCourses(){
         });
     };
 }
+
+export function deleteCourseSuccess(courses){
+    "use strict";
+    return {type: ActionTypes.DELETE_COURSE_SUCCESS, courses};
+}
+
+// Thunk API call
+export function deleteCourse(courseId){
+    "use strict";
+    return function(dispatch){
+        dispatch(ajaxCallBegin());
+        return courseApi.deleteCourse(courseId).then(courses=> {
+            console.log(courses);
+            dispatch(deleteCourseSuccess(courses));
+        }).catch(error => {
+            throw(error);
+        });
+        // return courseApi.getAllCourses().then( courses => {
+        //     dispatch(loadCoursesSuccess(courses));
+        // }).catch(error => {
+        //     throw(error);
+        // });
+    };
+}
